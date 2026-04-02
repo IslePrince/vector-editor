@@ -1,0 +1,20 @@
+name: vector-editor
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8092:8092"
+    environment:
+      VEC_PORT: 8092
+      VEC_DATA_DIR: /app/data
+      VEC_INKSCAPE_PATH: inkscape
+      VEC_MAX_WORKERS: 4
+    volumes:
+      - ve_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  ve_data:

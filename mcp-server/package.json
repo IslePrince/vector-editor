@@ -1,0 +1,14 @@
+{
+  "name": "vector-editor-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for vector-editor — wraps the vector-editor HTTP API for Claude",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "zod": "^3.23.8"
+  }
+}

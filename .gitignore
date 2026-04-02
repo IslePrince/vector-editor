@@ -1,0 +1,7 @@
+data/
+test-media/
+*.exe
+.env
+node_modules/
+tmp/
+*.log
