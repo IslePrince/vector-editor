@@ -2,11 +2,9 @@
 FROM golang:1.22-bookworm AS builder
 
 WORKDIR /build
-COPY go.mod go.sum* ./
-RUN go mod download 2>/dev/null || true
-
+COPY go.mod ./
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -o /build/vector-editor ./cmd/server
+RUN go mod tidy && CGO_ENABLED=0 GOOS=linux go build -o /build/vector-editor ./cmd/server
 
 # ── Runtime stage ─────────────────────────────────────────────────────────────
 FROM debian:bookworm-slim
