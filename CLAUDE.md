@@ -12,7 +12,12 @@ SVG vector graphics editor with an HTTP API and MCP server. Wraps Inkscape CLI f
 
 ## Host
 
-The API runs on Linux at **192.168.83.129:8092**. It does NOT run on Windows.
+The API runs on the desktop **jeevan-i9-rtx**, reachable over Tailscale at **100.106.28.1:8092**.
+It runs in Docker inside WSL2 (native Docker Engine in the `Ubuntu` distro, not Docker Desktop), from
+`/opt/vector-editor` with `docker compose up --build -d` (`restart: unless-stopped`). It starts at boot
+without login: a Windows startup task boots the distro, systemd starts dockerd, and dockerd restarts the
+container. WSL uses mirrored networking; Windows Firewall rule `mcp vector-editor 8092` allows inbound TCP 8092.
+Health: `curl http://100.106.28.1:8092/api/v1/health`.
 
 ## Project Structure
 
